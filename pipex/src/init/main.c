@@ -6,11 +6,11 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:06:39 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 14:26:57 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/12 19:19:49 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../../include/pipex.h"
 
 int init_cntx(t_cntx **cntx)
 {
@@ -58,39 +58,19 @@ int init(t_cntx **cntx, char **envp)
 	return (SUCCESS);
 }
 
-char *get_varvalue(t_cntx *cntx, char *varname)
-{
-	char	**envp;
-	char	*value;
-	size_t	len;
-
-	envp = cntx->envp;
-	while (envp)
-	{
-		len = ft_strlen(varname);
-		value = ft_strnstr(*envp, varname, len);
-		if (value)
-		{
-			return (value + len + 1);
-		}
-		envp++;
-	}
-	return (FAIL);
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_cntx *cntx;
 	char *r;
+	char *cmd[3];
 
 	if (init(&cntx, envp) == FAIL)
 	{
 		return (EXIT_FAILURE);
 	}
-	r = get_varvalue(cntx, "PATH");
+	cmd[0] = argv[1];
+	cmd[1] = NULL;
+	cmd[2] = NULL;
+	run_cmd(cntx, cmd);
 	return (EXIT_SUCCESS);
-    // char *args[] = {"/bin/ls", "-l", NULL};  // Arguments for the command
-    // execve("/bin/ls", args, NULL);           // Execute the 'ls' command with '-l' argument
-	// return (EXIT_SUCCESS);
-
 }

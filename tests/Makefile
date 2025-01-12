@@ -6,45 +6,39 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/12 19:46:04 by ipetrov          ###   ########.fr        #
+#    Updated: 2024/12/13 13:41:54 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC					=	cc
-CFLAGS				=	-g -MMD -MF
-#-Wall -Wextra -Werror -Wunreachable-code
-
+CFLAGS				=	-Wall -Wextra -Werror -g -MMD -MF
 RM					=	rm -rf
 
-# Name of the output library
-NAME 				=	pipex
+# Executable names
+NAME				=	\
+						unlink
 
 # Include directories
 INCLUDE_DIRS		=	\
 						./include \
-						./lib/elibft/include \
+						../pipex/lib/elibft/include \
 
 # Source directories
 VPATH				=	\
-						./src/init:\
-						./src/error:\
-						./src/execution:\
+						./src:\
+						./src/unlink:\
 
 # Include flags
-INCLUDE				=	$(addprefix -I , $(INCLUDE_DIRS))
-
-# Libraries
-LIB 				=	\
-						./lib/elibft/elibft.a \
+INCLUDE				=	$(addprefix -I, $(INCLUDE_DIRS))
 
 # Source files
-SRC					=	\
-						main.c \
-						run.c \
-						path.c \
-						error.c \
-						redirection.c \
+SRC					:= 	\
+						unlink.c \
+
+
+# Libraries
+LIB					=	../pipex/lib/elibft/elibft.a \
 
 # Object files
 OBJ					=	$(SRC:%.c=obj/%.o)
@@ -53,24 +47,26 @@ OBJ					=	$(SRC:%.c=obj/%.o)
 DEP					=	$(SRC:%.c=dep/%.d)
 
 # Make flags
-MFLAGS				=	 --no-print-directory -C
+MFLAGS				= 	--no-print-directory -C
+
+# Default target
+a: all
+	@./test_elibft
 
 # Build all targets
-all: lib $(NAME)
+all: $(NAME) lib
 
+lib:
+	@make  $(MFLAGS) ../pipex/lib/elibft/
 
 # Link mandatory object files
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(LIB) -o $@
 	@echo "$(NAME) has been built"
 
-# Build libraries
-lib:
-	@make $(MFLAGS) ./lib/elibft
-
 # Compile mandatory object files
-obj/%.o: %.c | obj_dir dep_dir
-	@$(CC) $(CFLAGS) dep/$(@:obj/%.o=%.d) $(INCLUDE) -c $< -o $@ && printf "Compiling: $(notdir $< \n)"
+obj/%.o: %.c | dep_dir obj_dir
+	@$(CC) $(CFLAGS) dep/$(@:obj/%.o=%.d) $(INCLUDE) -c $< -o $@
 
 # Create mandatory object directories
 obj_dir:
@@ -84,16 +80,14 @@ dep_dir:
 clean:
 	@$(RM) obj
 	@$(RM) dep
-	@make clean $(MFLAGS) ./lib/elibft
-	@echo "$(NAME) has been cleaned"
 
 # Clean build files and executables
 fclean: clean
-	@make fclean $(MFLAGS) ./lib/elibft
 	@$(RM) $(NAME)
+	@echo "Cleaned"
 
 # Rebuild everything
-re: fclean all
+re: fclean a
 
 # Phony targets
 .PHONY: all clean fclean re lib
