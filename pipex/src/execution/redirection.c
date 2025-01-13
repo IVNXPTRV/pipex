@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 19:06:28 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:26:42 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 int apply_redirs()
 {
-	redir_in("./infile");
+	// redir_in("./infile");
 	// redir_out("./outfile");
 	// redir_append("./outfile");
-	here_doc("EOF\n")
+	// here_doc("EOF\n")
+	return (SUCCESS);
 }
 
 int	redir_in(char *pathname)

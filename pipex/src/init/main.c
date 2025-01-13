@@ -6,11 +6,13 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:06:39 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 19:19:49 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:23:55 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
+
+int run_pipeline(t_cntx *cntx, char * **cmd);
 
 int init_cntx(t_cntx **cntx)
 {
@@ -61,16 +63,12 @@ int init(t_cntx **cntx, char **envp)
 int	main(int argc, char **argv, char **envp)
 {
 	t_cntx *cntx;
-	char *r;
-	char *cmd[3];
 
 	if (init(&cntx, envp) == FAIL)
 	{
 		return (EXIT_FAILURE);
 	}
-	cmd[0] = argv[1];
-	cmd[1] = NULL;
-	cmd[2] = NULL;
-	run_cmd(cntx, cmd);
+	run_pipeline(cntx, NULL);
+	// run_cmd(cntx, cmd);
 	return (EXIT_SUCCESS);
 }
