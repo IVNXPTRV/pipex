@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 18:02:41 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:53:33 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ typedef struct s_pipe
 {
 	int read;
 	int write;
-} t_pipe
+} t_pipe;
+
+typedef struct s_cmd
+{
+	char *path;
+	char **argv;
+} t_cmd;
 
 //const
 typedef enum e_error

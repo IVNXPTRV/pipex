@@ -6,14 +6,14 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 18:33:17 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:06:28 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/pipex.h"
 
-int apply_redir()
+int apply_redirs()
 {
 	redir_in("./infile");
 	// redir_out("./outfile");
