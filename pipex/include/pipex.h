@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 09:35:51 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:02:41 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ typedef struct s_cntx
 	char **envp;
 } t_cntx;
 
+typedef struct s_pipe
+{
+	int read;
+	int write;
+} t_pipe
 
 //const
 typedef enum e_error
@@ -34,6 +39,7 @@ typedef enum e_error
 	OPEN,
 	DUP2,
 	GNL,
+	FILE_NOT_FOUND,
 
 }	t_error;
 

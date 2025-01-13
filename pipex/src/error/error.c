@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:58:56 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 19:11:06 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 10:46:43 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char *get_error_msg(t_error error)
 		return ("malloc: allocation failed");
 	else if (error == CMD_NOT_FOUND)
 		return ("bash: command not found");
+	else if (error == FILE_NOT_FOUND)
+		return ("bash: No such file or directory");
 	return ("");
 }
 void error(t_cntx *cntx, t_error error)

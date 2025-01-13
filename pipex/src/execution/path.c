@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:05:10 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 19:12:10 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:17:47 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ char *get_validpath(t_cntx *cntx, char **argv)
 		if (!pathname)
 			return (FAIL);
 		return (pathname);
+	}
+	if (!pathname)
+	{
+		error(cntx, CMD_NOT_FOUND);
+		return (FAIL);
 	}
 	return (NULL);
 }
