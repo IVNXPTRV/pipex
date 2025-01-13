@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 19:43:49 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/13 09:35:51 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_cntx
 	char **envp;
 } t_cntx;
 
+
 //const
 typedef enum e_error
 {
@@ -32,6 +33,7 @@ typedef enum e_error
 	FORK,
 	OPEN,
 	DUP2,
+	GNL,
 
 }	t_error;
 
