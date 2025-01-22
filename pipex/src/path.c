@@ -6,13 +6,13 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:05:10 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 11:17:47 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:49:35 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pipex.h"
+#include "../include/pipex.h"
 
-char *get_varvalue(t_cntx *cntx, char *varname)
+static char *get_varvalue(t_cntx *cntx, char *varname)
 {
 	char	**envp;
 	char	*value;
@@ -32,24 +32,7 @@ char *get_varvalue(t_cntx *cntx, char *varname)
 	return (NULL);
 }
 
-bool is_executable(char *pathname)
-{
-	return (!access(pathname, F_OK | X_OK));
-}
-
-bool is_pathname(char *cmd)
-{
-	return (ft_strchr(cmd, '/'));
-}
-
-void remove_dirname(char **argv)
-{
-	*argv = ft_strrchr(*argv, '/') + 1;
-}
-
-//impossile to understand if malloc fail or no any valid paths
-//TODO: create different exit errot handlers with memory cleaning
-char *retrieve_pathname(char *path, char *basename)
+static char *retrieve_pathname(char *path, char *basename)
 {
 	char **dirname;
 	char *pathname;
@@ -66,16 +49,11 @@ char *retrieve_pathname(char *path, char *basename)
 	while (dirname[i])
 	{
 		pathname = ft_strjoin(dirname[i], "/");
-		//fix here
 		pathname = ft_strjoin(pathname, basename);
 		if (!pathname)
-		{
 			return ((void *)ft_parrclean(FAIL, free, dirname, NULL));
-		}
 		if (is_executable(pathname))
-		{
 			return (pathname);
-		}
 		free(pathname);
 		i++;
 	}
@@ -104,8 +82,7 @@ char *get_validpath(t_cntx *cntx, char **argv)
 	}
 	if (!pathname)
 	{
-		error(cntx, CMD_NOT_FOUND);
-		return (FAIL);
+		return ((char *)error(CMD_NOT_FOUND, NULL));
 	}
 	return (NULL);
 }

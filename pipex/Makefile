@@ -6,7 +6,7 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/22 14:26:21 by ipetrov          ###   ########.fr        #
+#    Updated: 2025/01/22 17:50:30 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,7 @@ INCLUDE_DIRS		=	\
 
 # Source directories
 VPATH				=	\
-						./src/init:\
-						./src/error:\
-						./src/execution:\
+						./src:\
 
 # Include flags
 INCLUDE				=	$(addprefix -I , $(INCLUDE_DIRS))
@@ -41,12 +39,13 @@ LIB 				=	\
 # Source files
 SRC					=	\
 						main.c \
-						run.c \
+						command.c \
 						path.c \
+						path_utils.c \
+						pipe.c \
 						error.c \
 						redirection.c \
 						execution.c \
-						pipeline.c \
 
 # Object files
 OBJ					=	$(SRC:%.c=obj/%.o)
@@ -59,7 +58,6 @@ MFLAGS				=	 --no-print-directory -C
 
 # Build all targets
 all: lib $(NAME)
-
 
 # Link mandatory object files
 $(NAME): $(OBJ)

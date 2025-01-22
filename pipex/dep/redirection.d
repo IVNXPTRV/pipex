@@ -1,2 +1,2 @@
-obj/redirection.o: src/execution/redirection.c \
-  src/execution/../../include/pipex.h lib/elibft/include/elibft.h
+obj/redirection.o: src/redirection.c src/../include/pipex.h \
+  lib/elibft/include/elibft.h

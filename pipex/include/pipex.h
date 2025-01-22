@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 16:25:41 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:49:18 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <errno.h>
+
+# define NAME "pipex"
 
 typedef struct s_cntx
 {
@@ -39,21 +42,20 @@ typedef struct s_cmd
 //const
 typedef enum e_error
 {
+	GENERIC,
 	MALLOC,
 	CMD_NOT_FOUND,
-	ERRNO,
 	FORK,
 	OPEN,
-	DUP2,
-	GNL,
+	PIPE,
 	FILE_NOT_FOUND,
-
+	INPUT,
+	HEREDOC_INPUT,
+	EXECVE
 }	t_error;
 
-//execution
-void run_cmd(t_cntx *cntx, char *cmd);
+//path
 char *get_validpath(t_cntx *cntx, char **argv);
-char *get_varvalue(t_cntx *cntx, char *varname);
 
 //redirection
 int	redir_in(char *pathname);
@@ -61,10 +63,21 @@ int	redir_out(char *pathname);
 int	redir_append(char *pathname);
 int	redir_heredoc(char *delim);
 
-void open_pipe(t_pipe *p);
-void close_pipe(t_pipe *p);
+//pipe
+int open_pipe(t_pipe *p);
+int close_pipe(t_pipe *p);
+bool is_pathname(char *cmd);
+void remove_dirname(char **argv);
+
+//utils
+bool is_heredoc(char *argv);
+bool is_executable(char *pathname);
+
+//execution
+void execute(t_cntx *cntx, char **argv);
+int run_cmd(t_cntx *cntx, char *cmd);
 
 //error
-void error(t_cntx *cntx, t_error error);
+int error(t_error error, void *cntx);
 
 #endif
