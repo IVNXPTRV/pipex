@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 14:25:49 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 16:25:41 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int	redir_in(char *pathname);
 int	redir_out(char *pathname);
 int	redir_append(char *pathname);
 int	redir_heredoc(char *delim);
+
+void open_pipe(t_pipe *p);
+void close_pipe(t_pipe *p);
 
 //error
 void error(t_cntx *cntx, t_error error);
