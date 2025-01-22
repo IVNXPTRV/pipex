@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 15:32:53 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 16:35:26 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,20 @@ void close_pipe(t_pipe *p)
 	close(p->write);
 }
 
-void handle_infile(t_cntx *cntx, char **argv)
+void handle_infile(t_cntx *cntx, char ***argv)
 {
-	if (is_heredoc(*argv)) //1st arg open and dup
+	if (is_heredoc(*(*argv))) //1st arg open and dup
 	{
 		cntx->heredoc = true;
-		redir_heredoc(*(++argv));
+		(*argv)++;
+		redir_heredoc(**argv);
+		(*argv)++;
 		//set cntx mode for last append
 	}
 	else
 	{
-		redir_in(*argv++);
+		redir_in(**argv);
+		(*argv)++;
 		//open ordinary file
 	}
 }
@@ -74,8 +77,8 @@ int execute(t_cntx *cntx, char **argv)
 	pid_t pid;
 	t_pipe p;
 
-	handle_infile(cntx, argv);
-	argv++;
+	handle_infile(cntx, &argv);
+
 	while (is_cmd(argv))
 	{
 		open_pipe(&p);
@@ -96,7 +99,7 @@ int execute(t_cntx *cntx, char **argv)
 		else
 		{
 			dup2(p.read, STDIN_FILENO);
-			close(STDOUT_FILENO);
+			// close(STDOUT_FILENO);
 			close_pipe(&p);
 		}
 		argv++;
