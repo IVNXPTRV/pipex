@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:06:39 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 17:47:36 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:35:13 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,30 @@ static int init(t_cntx **cntx, char **envp)
 		return (FAIL);
 	}
 	(*cntx)->heredoc = false;
+	(*cntx)->pid = -1;
 	return (SUCCESS);
 }
 
-static int wait_all_childs()
+static int get_exitcode(pid_t pid)
 {
-	while (wait(NULL) != -1)
-		;
-	return (SUCCESS);
+	int		status;
+	pid_t	child;
+	int		exitcode;
+
+	child = 0;
+	exitcode = -1;
+	while (child != -1)
+	{
+		child = wait(&status);
+		if (child == pid)
+		{
+			if (WIFEXITED(status))
+			{
+				exitcode = WEXITSTATUS(status);
+			}
+		}
+	}
+	return (exitcode);
 }
 
 static bool is_valid_input(int argc, char **argv)
@@ -88,6 +104,7 @@ static bool is_valid_input(int argc, char **argv)
 int	main(int argc, char **argv, char **envp)
 {
 	t_cntx *cntx;
+	int	exitcode;
 
 	if (!is_valid_input(argc, argv))
 	{
@@ -98,6 +115,8 @@ int	main(int argc, char **argv, char **envp)
 		return (EXIT_FAILURE);
 	}
 	execute(cntx, ++argv);
-	wait_all_childs();
-	return (EXIT_SUCCESS);
+	exitcode = get_exitcode(cntx->pid);
+	ft_parrclean(0, free, cntx->envp, NULL);
+	free(cntx);
+	return (exitcode);
 }

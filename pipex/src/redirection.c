@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 17:48:50 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:19:08 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	redir_in(char *pathname)
 	fd = open(pathname, O_RDONLY);
 	if (fd == ERROR)
 	{
-		return (error(FILE_NOT_FOUND, NULL));
+		error(FILE_NOT_FOUND, NULL);
 	}
 	dup2(fd, STDIN_FILENO);
 	close(fd);

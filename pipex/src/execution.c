@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 17:50:14 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:42:29 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ void execute(t_cntx *cntx, char **argv)
 	pid_t	pid;
 	t_pipe	p;
 
-	if (!handle_infile(cntx, &argv))
-		error(GENERIC, NULL);
+	handle_infile(cntx, &argv);
 	while (is_cmd(argv))
 	{
 		open_pipe(&p);
@@ -70,6 +69,7 @@ void execute(t_cntx *cntx, char **argv)
 		}
 		else if (pid > 0)
 		{
+			cntx->pid = pid;
 			dup2(p.read, STDIN_FILENO);
 			close_pipe(&p);
 		}
