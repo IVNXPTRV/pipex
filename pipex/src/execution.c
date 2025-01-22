@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 19:13:07 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:56:56 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ static int handle_infile(t_cntx *cntx, char ***argv)
 	}
 	else
 	{
-		redir_in(**argv);
+		if(!redir_in(**argv))
+		{
+			(*argv) += 2;
+			return (FAIL);
+		}
 		(*argv)++;
 	}
 	return (SUCCESS);
