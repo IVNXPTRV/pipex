@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 18:42:29 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:13:07 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int handle_infile(t_cntx *cntx, char ***argv)
 {
+
 	if (is_heredoc(*(*argv)))
 	{
 		cntx->heredoc = true;
@@ -23,8 +24,7 @@ static int handle_infile(t_cntx *cntx, char ***argv)
 	}
 	else
 	{
-		if (!redir_in(**argv))
-			return (FAIL);
+		redir_in(**argv);
 		(*argv)++;
 	}
 	return (SUCCESS);
@@ -60,11 +60,11 @@ void execute(t_cntx *cntx, char **argv)
 	{
 		open_pipe(&p);
 		dup2(p.write, STDOUT_FILENO);
+		close(p.write);
 		handle_outfile(cntx, argv);
 		pid = fork();
 		if (pid == 0)
 		{
-			close(p.write);
 			run_cmd(cntx, *argv);
 		}
 		else if (pid > 0)
