@@ -6,7 +6,7 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/13 19:27:00 by ipetrov          ###   ########.fr        #
+#    Updated: 2025/01/22 14:26:21 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC					=	\
 						path.c \
 						error.c \
 						redirection.c \
+						execution.c \
 						pipeline.c \
 
 # Object files

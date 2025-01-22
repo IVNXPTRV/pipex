@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 18:53:33 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:25:49 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_cntx
 {
 	char **envp;
+	bool heredoc;
 } t_cntx;
 
 typedef struct s_pipe
@@ -50,12 +51,15 @@ typedef enum e_error
 }	t_error;
 
 //execution
-int run_cmd(t_cntx *cntx, char **argv);
+void run_cmd(t_cntx *cntx, char *cmd);
 char *get_validpath(t_cntx *cntx, char **argv);
 char *get_varvalue(t_cntx *cntx, char *varname);
 
 //redirection
 int	redir_in(char *pathname);
+int	redir_out(char *pathname);
+int	redir_append(char *pathname);
+int	redir_heredoc(char *delim);
 
 //error
 void error(t_cntx *cntx, t_error error);

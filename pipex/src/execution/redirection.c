@@ -6,21 +6,21 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/13 19:26:42 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:23:03 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/pipex.h"
 
-int apply_redirs()
-{
-	// redir_in("./infile");
-	// redir_out("./outfile");
-	// redir_append("./outfile");
-	// here_doc("EOF\n")
-	return (SUCCESS);
-}
+// int apply_redirs()
+// {
+// 	// redir_in("./infile");
+// 	// redir_out("./outfile");
+// 	// redir_append("./outfile");
+// 	// here_doc("EOF\n")
+// 	return (SUCCESS);
+// }
 
 int	redir_in(char *pathname)
 {
@@ -36,6 +36,7 @@ int	redir_in(char *pathname)
 	{
 		error(NULL, DUP2);
 	}
+	close(fd);
 	return (SUCCESS);
 }
 
@@ -52,6 +53,7 @@ int	redir_out(char *pathname)
 	{
 		error(NULL, DUP2);
 	}
+	close(fd);
 	return (SUCCESS);
 }
 
@@ -68,6 +70,7 @@ int	redir_append(char *pathname)
 	{
 		error(NULL, DUP2);
 	}
+	close(fd);
 	return (SUCCESS);
 }
 
