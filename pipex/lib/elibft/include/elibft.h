@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:04:12 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/12 18:39:54 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 17:10:43 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <sys/wait.h>
+
 # define BUFFER_SIZE 1024
 # define SUCCESS 1
 # define FAIL 0
