@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:58:56 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:52:02 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:59:38 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static	char	*get_error_msg(t_error error)
 
 int	error(t_error error, void *cntx)
 {
+	(void)cntx;
 	if (error == INPUT)
 	{
 		ft_putendl_fd(get_error_msg(error), STDERR_FILENO);

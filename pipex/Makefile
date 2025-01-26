@@ -6,13 +6,13 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/26 19:50:45 by ipetrov          ###   ########.fr        #
+#    Updated: 2025/01/26 19:58:40 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC					=	cc
-CFLAGS				=	-g -MMD -MF
+CFLAGS				=	-Wall -Wextra -Werror -Wunreachable-code -g -MMD -MF
 #-Wall -Wextra -Werror -Wunreachable-code
 
 RM					=	rm -rf

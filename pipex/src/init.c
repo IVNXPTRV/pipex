@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:49:53 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:51:40 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:00:40 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int	init_cntx(t_cntx **cntx)
 static	int	init_envp(t_cntx *cntx, char **envp)
 {
 	size_t	len;
-	int		i;
+	size_t	i;
 
 	len = ft_parrlen(envp);
 	cntx->envp = ft_calloc(len + 1, sizeof(char *));

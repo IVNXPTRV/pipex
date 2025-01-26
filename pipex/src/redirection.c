@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:47:40 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:03:49 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,13 @@ int	redir_heredoc(char *delim)
 {
 	char	*line;
 	t_pipe	p;
-	char	*pathname;
-	int		status;
 	t_file	*fl;
 
 	open_pipe(&p);
 	while (1)
 	{
 		ft_printf("> ");
-		status = get_next_line(STDIN_FILENO, &line, &fl);
+		get_next_line(STDIN_FILENO, &line, &fl);
 		line[ft_strlen(line) - 1] = '\0';
 		if (is_eqlstr(line, delim))
 		{

@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:04:47 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:47:05 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:59:14 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	run_cmd(t_cntx *cntx, char *cmd)
 {
 	char	*pathname;
 	char	**argv;
-	int		stdin_status;
 
 	argv = NULL;
 	if (!cmd || !*cmd)
