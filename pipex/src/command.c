@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:04:47 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 19:45:57 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 11:24:51 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int run_cmd(t_cntx *cntx, char *cmd)
 		return (error(MALLOC, NULL));
 	}
 	pathname = get_validpath(cntx, argv);
+	if (pathname)
+		remove_dirname(argv);
 	if (execve(pathname, argv, cntx->envp) == ERROR)
 	{
 		ft_parrclean(0, free, argv, NULL);
