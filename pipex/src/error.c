@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:58:56 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 19:14:50 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 12:50:10 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static char *get_error_msg(t_error error)
 		return ("pipex: command not found");
 	return ("");
 }
+
 int error(t_error error, void *cntx)
 {
 	if (error == INPUT)
@@ -32,7 +33,7 @@ int error(t_error error, void *cntx)
 		ft_putendl_fd(get_error_msg(error), STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	else if (error == FILE_NOT_FOUND)
+	else if (error == FILE_NOT_FOUND || error == OPEN)
 	{
 		perror("pipex");
 		return (FAIL);
