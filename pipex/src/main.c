@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:06:39 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 18:35:13 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 14:34:35 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int get_exitcode(pid_t pid)
 	int		exitcode;
 
 	child = 0;
-	exitcode = -1;
+	exitcode = 1;
 	while (child != -1)
 	{
 		child = wait(&status);
