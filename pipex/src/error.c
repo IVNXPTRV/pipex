@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:58:56 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 13:19:45 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 16:23:24 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int error(t_error error, void *cntx)
 	else if (error == EXECVE)
 	{
 		ft_putendl_fd(get_error_msg(error), STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 	else if (error == FILE_NOT_FOUND || error == OPEN)
 	{

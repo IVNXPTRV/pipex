@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 14:18:41 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 15:50:00 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void execute(t_cntx *cntx, char **argv)
 		{
 			cntx->pid = pid;
 			dup2(p.read, STDIN_FILENO);
-			close_pipe(&p);
+			close(p.read);
 		}
 		else
 			error(FORK, NULL);

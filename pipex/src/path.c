@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:05:10 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 11:24:07 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 16:29:29 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static char *retrieve_pathname(char *path, char *basename)
 {
 	char	**dirname;
 	char	*pathname;
+	char	*pathname2;
 	size_t	i;
 
 	if (!path)
@@ -46,10 +47,14 @@ static char *retrieve_pathname(char *path, char *basename)
 	i = 0;
 	while (dirname[i])
 	{
-		pathname = ft_strjoin(dirname[i], "/");
-		pathname = ft_strjoin(pathname, basename);
+		pathname2 = ft_strjoin(dirname[i], "/");
+		pathname = ft_strjoin(pathname2, basename);
+		free(pathname2);
 		if (is_executable(pathname))
+		{
+			ft_parrclean(0, free, dirname, NULL);
 			return (pathname);
+		}
 		free(pathname);
 		i++;
 	}
