@@ -6,11 +6,19 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:04:47 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 17:24:54 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 18:41:51 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+static int handle_null_execv(char **argv, t_cntx *cntx)
+{
+	ft_parrclean(0, free, argv, NULL);
+	ft_parrclean(0, free, cntx->envp, NULL);
+	free(cntx);
+	return (error(EXECVE, NULL));
+}
 
 int run_cmd(t_cntx *cntx, char *cmd)
 {
@@ -18,16 +26,20 @@ int run_cmd(t_cntx *cntx, char *cmd)
 	char	**argv;
 	int 	stdin_status;
 
-	argv = ft_split(cmd, ' ');
-	if (argv == NULL)
+	argv = NULL;
+	if (!cmd || !*cmd)
 	{
-		return (error(MALLOC, NULL));
+		handle_null_execv(argv, cntx);
 	}
+	argv = ft_split(cmd, ' ');
 	pathname = get_validpath(cntx, argv);
 	if (pathname)
 		remove_dirname(argv);
+	else
+		handle_null_execv(argv, cntx);
 	if (execve(pathname, argv, cntx->envp) == ERROR)
 	{
+		free(pathname);
 		ft_parrclean(0, free, argv, NULL);
 		ft_parrclean(0, free, cntx->envp, NULL);
 		free(cntx);

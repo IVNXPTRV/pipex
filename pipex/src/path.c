@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:05:10 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 16:29:29 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 18:25:54 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ static char *retrieve_pathname(char *path, char *basename)
 		free(pathname);
 		i++;
 	}
-	return (NULL);
+	return ((char *)ft_parrclean(0, free, dirname, NULL));
 }
 
 char *get_validpath(t_cntx *cntx, char **argv)
 {
 	char	*pathname;
 
+	if (!argv)
+		return (NULL);
 	if (is_pathname(argv[0]))
 	{
 		pathname = argv[0];
