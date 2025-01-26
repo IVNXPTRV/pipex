@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 18:23:06 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:01:57 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_cntx
 	char **envp;
 	bool heredoc;
 	pid_t	pid;
+	int code;
 } t_cntx;
 
 typedef struct s_pipe

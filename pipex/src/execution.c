@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 18:42:34 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:02:31 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void handle_outfile(t_cntx *cntx, char **argv)
 		{
 			if (!redir_out(*(argv + 1)))
 			{
-				*argv = NULL;
+				cntx->code = 1;
 			}
 		}
 	}

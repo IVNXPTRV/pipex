@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:06:39 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 15:45:28 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:02:11 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int init(t_cntx **cntx, char **envp)
 	}
 	(*cntx)->heredoc = false;
 	(*cntx)->pid = -1;
+	(*cntx)->code = 0;
 	return (SUCCESS);
 }
 
