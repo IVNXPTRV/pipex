@@ -6,13 +6,13 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:02:31 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:53:09 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static int handle_infile(t_cntx *cntx, char ***argv)
+static	int	handle_infile(t_cntx *cntx, char ***argv)
 {
 	if (is_heredoc(*(*argv)))
 	{
@@ -23,7 +23,7 @@ static int handle_infile(t_cntx *cntx, char ***argv)
 	}
 	else
 	{
-		if(!redir_in(**argv))
+		if (!redir_in(**argv))
 		{
 			(*argv) += 2;
 			return (FAIL);
@@ -33,7 +33,7 @@ static int handle_infile(t_cntx *cntx, char ***argv)
 	return (SUCCESS);
 }
 
-static void handle_outfile(t_cntx *cntx, char **argv)
+static	void	handle_outfile(t_cntx *cntx, char **argv)
 {
 	if (*(argv + 2) == NULL)
 	{
@@ -51,12 +51,12 @@ static void handle_outfile(t_cntx *cntx, char **argv)
 	}
 }
 
-static bool is_cmd(char **argv)
+static	bool	is_cmd(char **argv)
 {
 	return (*(argv + 1));
 }
 
-void execute(t_cntx *cntx, char **argv)
+void	execute(t_cntx *cntx, char **argv)
 {
 	pid_t	pid;
 	t_pipe	p;

@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:04:12 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:27:01 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:45:54 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_atoi(char *str, void *number, size_t size_of, int base);
 t_arr		*strs_to_arr(t_arr **arr, char **strs);
 
 //file
-int	get_next_line(int fd, char **line, t_file **fl_link);
+int			get_next_line(int fd, char **line, t_file **fl_link);
 
 // list
 int			lst_new(t_lst **lst, void *item);
@@ -129,7 +129,7 @@ int			ft_isalpha(int c);
 int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
-char	**ft_split(char const *s, char c);
+char		**ft_split(char const *s, char c);
 
 char		*ft_strchr(const char *s, int c);
 int			ft_strcmp(const char *s1, const char *s2);

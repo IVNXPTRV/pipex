@@ -6,13 +6,13 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:58:56 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 16:23:24 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:52:02 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static char *get_error_msg(t_error error)
+static	char	*get_error_msg(t_error error)
 {
 	if (error == INPUT)
 		return ("pipex: wrong number of arguments");
@@ -21,7 +21,7 @@ static char *get_error_msg(t_error error)
 	return ("");
 }
 
-int error(t_error error, void *cntx)
+int	error(t_error error, void *cntx)
 {
 	if (error == INPUT)
 	{

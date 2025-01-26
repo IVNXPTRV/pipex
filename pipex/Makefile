@@ -6,7 +6,7 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/22 17:50:30 by ipetrov          ###   ########.fr        #
+#    Updated: 2025/01/26 19:50:45 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC					=	\
 						error.c \
 						redirection.c \
 						execution.c \
+						init.c \
 
 # Object files
 OBJ					=	$(SRC:%.c=obj/%.o)

@@ -6,15 +6,15 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:40:32 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/22 18:42:30 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:46:39 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-int open_pipe(t_pipe *p)
+int	open_pipe(t_pipe *p)
 {
-	int fd[2];
+	int	fd[2];
 
 	if (pipe(fd) == ERROR)
 	{
@@ -25,7 +25,7 @@ int open_pipe(t_pipe *p)
 	return (SUCCESS);
 }
 
-int close_pipe(t_pipe *p)
+int	close_pipe(t_pipe *p)
 {
 	close(p->read);
 	close(p->write);

@@ -6,15 +6,15 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:29:20 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:29:46 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:47:40 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-bool is_heredoc(char *argv)
+bool	is_heredoc(char *argv)
 {
-	return(is_eqlstr(argv, "here_doc"));
+	return (is_eqlstr(argv, "here_doc"));
 }
 
 int	redir_heredoc(char *delim)
@@ -34,7 +34,7 @@ int	redir_heredoc(char *delim)
 		if (is_eqlstr(line, delim))
 		{
 			free(line);
-			break;
+			break ;
 		}
 		line[ft_strlen(line)] = '\n';
 		ft_putstr_fd(line, p.write);
@@ -48,7 +48,7 @@ int	redir_heredoc(char *delim)
 
 int	redir_in(char *pathname)
 {
-	int fd;
+	int		fd;
 	t_pipe	p;
 
 	fd = open(pathname, O_RDONLY);
@@ -68,7 +68,7 @@ int	redir_in(char *pathname)
 
 int	redir_out(char *pathname)
 {
-	int fd;
+	int	fd;
 
 	fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (fd == ERROR)
@@ -82,7 +82,7 @@ int	redir_out(char *pathname)
 
 int	redir_append(char *pathname)
 {
-	int fd;
+	int	fd;
 
 	fd = open(pathname, O_WRONLY | O_APPEND | O_CREAT, 0666);
 	if (fd == ERROR)

@@ -6,13 +6,13 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:05:10 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 18:25:54 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:52:13 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static char *get_varvalue(t_cntx *cntx, char *varname)
+static	char	*get_varvalue(t_cntx *cntx, char *varname)
 {
 	char	**envp;
 	char	*value;
@@ -32,7 +32,7 @@ static char *get_varvalue(t_cntx *cntx, char *varname)
 	return (NULL);
 }
 
-static char *retrieve_pathname(char *path, char *basename)
+static	char	*retrieve_pathname(char *path, char *basename)
 {
 	char	**dirname;
 	char	*pathname;
@@ -61,7 +61,7 @@ static char *retrieve_pathname(char *path, char *basename)
 	return ((char *)ft_parrclean(0, free, dirname, NULL));
 }
 
-char *get_validpath(t_cntx *cntx, char **argv)
+char	*get_validpath(t_cntx *cntx, char **argv)
 {
 	char	*pathname;
 
