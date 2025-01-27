@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:36:16 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:50:36 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/27 20:04:50 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ bool	is_executable(char *pathname);
 
 //execution
 void	execute(t_cntx *cntx, char **argv);
-void	run_cmd(t_cntx *cntx, char *cmd);
+void	run_cmd(t_cntx *cntx, char *cmd, t_pipe	p);
 
 //error
 int		error(t_error error, void *cntx);

@@ -6,7 +6,7 @@
 /*   By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:07 by ipetrov           #+#    #+#             */
-/*   Updated: 2025/01/26 19:53:09 by ipetrov          ###   ########.fr       */
+/*   Updated: 2025/01/27 20:04:27 by ipetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	execute(t_cntx *cntx, char **argv)
 		pid = fork();
 		if (pid == 0)
 		{
-			run_cmd(cntx, *argv);
+			run_cmd(cntx, *argv, p);
 		}
 		else if (pid > 0)
 		{
