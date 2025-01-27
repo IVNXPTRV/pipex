@@ -6,7 +6,7 @@
 #    By: ipetrov <ipetrov@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 16:48:06 by ipetrov           #+#    #+#              #
-#    Updated: 2025/01/26 19:58:40 by ipetrov          ###   ########.fr        #
+#    Updated: 2025/01/27 17:04:15 by ipetrov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,8 @@ MFLAGS				=	 --no-print-directory -C
 
 # Build all targets
 all: lib $(NAME)
+
+bonus: all
 
 # Link mandatory object files
 $(NAME): $(OBJ)
